@@ -14,11 +14,21 @@
             ?>
             <hr>
             <h2>Ophalen van een user</h2>
+            <h3>Manier 1</h3>
             <?php
                 $sql = "SELECT * FROM users WHERE id=1";
                 $result = $database->query($sql);
                 $user_found = mysqli_fetch_array($result);
                 echo $user_found["username"];
+            ?>
+            <hr>
+            <h3>Manier 2</h3>
+            <?php
+                $result = User::find_user_by_id(1);
+                //var_dump($result);
+                while($row = mysqli_fetch_array($result)){
+                    echo $row["first_name"] . ' - ' . $row["last_name"] . "<br>";
+                }
             ?>
             <hr>
             <h2>Class user aanspreken en doorlopen</h2>
