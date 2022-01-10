@@ -11,6 +11,16 @@
               exit();
           }
         }
+        public function query($sql){
+            $result = $this->connection->query($sql);
+            $this->confirm_query($result);
+            return $result;
+        }
+        private function confirm_query($result){
+            if(!$result){
+                die("Query kan niet worden uitgevoerd " . $this->connection->error);
+            }
+        }
         function __construct(){
             $this->open_db_connection();
         }
