@@ -65,6 +65,9 @@ UPLO
                 }
             }
         }
+        public function picture_path(){
+            return $this->upload_directory.DS.$this->filename;
+        }
 
 }
 ?>
