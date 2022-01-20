@@ -11,7 +11,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+            <div class="sidebar-brand-text mx-3">CMS</div>
         </a>
 
         <!-- Divider -->
@@ -29,8 +29,14 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Interface
+            Users
         </div>
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="users.php">
+                <i class="fas fa-users"></i>
+                <span>Users</span></a>
+        </li>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
@@ -72,9 +78,14 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Addons
+            Photos
         </div>
-
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="photos.php">
+                <i class="fas fa-camera"></i>
+                <span>Photos</span></a>
+        </li>
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"

@@ -24,13 +24,17 @@ include("includes/content-top.php");
                 </tr>
                 </thead>
                 <tbody>
+
+
                 <?php foreach($photos as $photo): ?>
                     <tr>
-                        <th scope="row"><?php echo $photo->photo_id; ?></th>
-                        <td><img src="<?php echo $photo->picture_path(); ?>" height="62" widt="62" alt="<?php echo $photo->title ?>"></td>
+                        <th scope="row"><?php echo $photo->id; ?></th>
+                        <td><img src="<?php  echo ($photo->picture_path()) ?  $photo->picture_path(): "nok" ?>" height="62" widt="62" alt="<?php echo $photo->title ?>"></td>
                         <td><?php echo $photo->title; ?></td>
                         <td><?php echo $photo->filename; ?></td>
                         <td><?php echo $photo->size; ?></td>
+                        <td><a href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a></td>
+                        <td><a href="edit_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-warning"><i class="far fa-edit"></i></a></td>
                     </tr>
                 <?php endforeach; ?>
 

@@ -2,7 +2,7 @@
     class Photo extends Db_object{
         protected static $db_table = "photos";
         protected static $db_table_fields = array('title','description', 'filename', 'type', 'size');
-        public $photo_id;
+        public $id;
         public $title;
         public $description;
         public $filename;
@@ -20,7 +20,6 @@
             UPLOAD_ERR_NO_TMP_DIR => "Missing a temporary folder",
             UPLOAD_ERR_CANT_WRITE => "Failed to write to disk",
             UPLOAD_ERR_EXTENSION => "A php extension stopped your upload",
-UPLO
         );
 
         /***methodes***/
@@ -68,6 +67,15 @@ UPLO
         public function picture_path(){
             return $this->upload_directory.DS.$this->filename;
         }
+        public function delete_photo(){
+            if($this->delete()){
+                $target_path = SITE_ROOT.DS.'admin'.DS.$this->picture_path();
+                return unlink($target_path) ? true : false;
+            }else{
+                return false;
+            }
+        }
+
 
 }
 ?>
