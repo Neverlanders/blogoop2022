@@ -20,6 +20,7 @@ include("includes/content-top.php");
                     <th scope="col">Photo</th>
                     <th scope="col">Title</th>
                     <th scope="col">File Name</th>
+                    <th scope="col">Alt</th>
                     <th scope="col">Size</th>
                 </tr>
                 </thead>
@@ -32,6 +33,7 @@ include("includes/content-top.php");
                         <td><img src="<?php  echo ($photo->picture_path()) ?  $photo->picture_path(): "nok" ?>" height="62" widt="62" alt="<?php echo $photo->title ?>"></td>
                         <td><?php echo $photo->title; ?></td>
                         <td><?php echo $photo->filename; ?></td>
+                        <td><?php echo $photo->alternate_text; ?></td>
                         <td><?php echo $photo->size; ?></td>
                         <td><a href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a></td>
                         <td><a href="edit_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-warning"><i class="far fa-edit"></i></a></td>

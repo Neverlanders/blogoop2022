@@ -14,6 +14,7 @@ $photo = new Photo();
 if(isset($_POST['submit'])){
 
     $photo->title = $_POST['title'];
+    $photo->alternate_text = $_POST['alternate_text'];
     $photo->description = $_POST['description'];
     $photo->set_file($_FILES['file']);
 
@@ -33,6 +34,10 @@ if(isset($_POST['submit'])){
                 <div class="form-group">
                     <label for="title">title</label>
                     <input type="text" name="title" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="alternate_text">title</label>
+                    <input type="text" name="alternate_text" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
