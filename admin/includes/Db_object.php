@@ -62,7 +62,7 @@
             $properties = $this->clean_properties();
             $properties_assoc = array();
             foreach($properties as $key => $value){
-                $properties_assoc[] = "{key}='{$value}'";
+                $properties_assoc[] = "{$key}='{$value}'";
             }
             $sql = "UPDATE ". static::$db_table ." SET ";
             $sql .= implode(", ",$properties_assoc);

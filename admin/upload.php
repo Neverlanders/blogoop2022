@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
                     <input type="text" name="title" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="alternate_text">title</label>
+                    <label for="alternate_text">Alt</label>
                     <input type="text" name="alternate_text" class="form-control">
                 </div>
                 <div class="form-group">

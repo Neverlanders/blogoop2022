@@ -4,7 +4,25 @@ if(!$session->is_signed_in()){//testen of er een user ingelogd is (is er een ses
     redirect('login2.php');
 }
 
-$photos = Photo::find_all();
+if(empty($_GET['id'])){
+    redirect('photos.php');
+}else{
+    $photo = Photo::find_by_id($_GET['id']);//ophalen van de photo uit de database
+    if(isset($_POST['update'])){
+        if($photo){
+            $photo->title = $_POST['title'];
+            $photo->alternate_text = $_POST['alternate_text'];
+            $photo->description = $_POST['description'];
+            $photo->type = $_POST['type'];
+            $photo->size = $_POST['size'];
+            $photo->update();
+        }
+    }
+
+
+}
+
+
 
 include("includes/sidebar.php");
 include("includes/content-top.php");
@@ -13,37 +31,42 @@ include("includes/content-top.php");
     <div class="row">
         <div class="col-12">
             <h1>PHOTOS</h1>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Photo</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">File Name</th>
-                    <th scope="col">Alt</th>
-                    <th scope="col">Size</th>
-                </tr>
-                </thead>
-                <tbody>
+            <form action="edit_photo.php?id=<?php echo $photo->id; ?>" method="post" enctype="multipart/form-data">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <label for="title">title</label>
+                                <input type="text" name="title" class="form-control" value="<?php echo $photo->title; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="alternate_text">Alt</label>
+                                <input type="text" name="alternate_text" class="form-control" value="<?php echo $photo->alternate_text; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" name="description" rows="3">
+                      <?php echo $photo->description; ?>
+                    </textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="file" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <img class="img-fluid img-thumbnail" src="<?php echo $photo->picture_path(); ?>">
+                            <div id="imagedata">
+                                <p><i class="fas fa-calendar pr-1"></i>Uploaded on: April 1st, 2021</p>
+                                <p><i class="fas fa-file pr-1"></i><?php echo $photo->filename; ?></p>
+                                <p><i class="fas fa-file-image pr-1"></i><?php echo $photo->type; ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
-                <?php foreach($photos as $photo): ?>
-                    <tr>
-                        <th scope="row"><?php echo $photo->id; ?></th>
-                        <td><img src="<?php  echo ($photo->picture_path()) ?  $photo->picture_path(): "nok" ?>" height="62" widt="62" alt="<?php echo $photo->title ?>"></td>
-                        <td><?php echo $photo->title; ?></td>
-                        <td><?php echo $photo->filename; ?></td>
-                        <td><?php echo $photo->alternate_text; ?></td>
-                        <td><?php echo $photo->size; ?></td>
-                        <td><a href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a></td>
-                        <td><a href="edit_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-warning"><i class="far fa-edit"></i></a></td>
-                    </tr>
-                <?php endforeach; ?>
-
-
-
-                </tbody>
-            </table>
+                <input type="submit" name="update" value="Update" class="btn btn-warning">
+            </form>
         </div>
     </div>
 </div>
