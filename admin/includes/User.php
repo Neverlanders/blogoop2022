@@ -34,7 +34,10 @@
                 $this->errors[] = $this->upload_errors_array['error'];
                 return false;
             }else{
-                $this->user_image = basename($file['name']);
+                $date = date('Y_m_d-H-i-s');
+                $without_extension = pathinfo(basename($file['name']), PATHINFO_FILENAME);
+                $extension = pathinfo(basename($file['name']), PATHINFO_EXTENSION);
+                $this->user_image = $without_extension.$date.'.'.$extension;
                 $this->type = $file['type'];
                 $this->size = $file['size'];
                 $this->tmp_path = $file['tmp_name'];
