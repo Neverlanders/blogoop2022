@@ -1,5 +1,6 @@
 <?php
 include("includes/header.php");
+
 if (!$session->is_signed_in()) {//testen of er een user ingelogd is (is er een session)
     redirect('login2.php');
 }
@@ -14,8 +15,19 @@ include("includes/content-top.php");
 <div class="col-12 px-0">
     <div class="card">
         <div class="card-body">
+            <?php if($session->message): ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?php echo $session->message;?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif; ?>
             <div class="d-flex no-block align-items-center mb-4">
                 <h4 class="card-title">All Contacts</h4>
+
+
+
                 <div class="ml-auto">
                     <div class="btn-group">
                         <a href="add_user.php" class="

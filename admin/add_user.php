@@ -1,5 +1,6 @@
 <?php
 include("includes/header.php");
+
 if(!$session->is_signed_in()){//testen of er een user ingelogd is (is er een session)
     redirect('login2.php');
 }
@@ -10,7 +11,7 @@ if(isset($_POST['add_user'])){
     $user->password = $_POST['password'];
     $user->last_name = $_POST['last_name'];
     $user->set_file($_FILES['user_image']);
-
+    $session->message("The User {$user->username} has been added");
     $user->save_user_and_image();
     redirect('users.php');
 }
