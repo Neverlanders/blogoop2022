@@ -19,6 +19,9 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
+            <a class="nav-link" href="../../blogoop/index.php">
+                <i class="fas fa-landmark"></i>
+                <span>Frontend</span></a>
             <a class="nav-link" href="index.php">
                 <i class="fas fa-landmark"></i>
                 <span>Dashboard</span></a>
