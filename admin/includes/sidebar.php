@@ -40,8 +40,19 @@
                 <i class="fas fa-users"></i>
                 <span>Users</span></a>
         </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
 
-
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Categories
+        </div>
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="categories.php">
+                <i class="fas fa-cog"></i>
+                <span>Categories</span></a>
+        </li>
 
 
         <!-- Divider -->

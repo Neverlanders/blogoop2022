@@ -9,6 +9,8 @@ $photo = Photo::find_by_id($_GET['id']); //http://localhost/blogoop/photo.php?id
 
 $comments= Comment::find_the_comment($photo->id);//FOREIGN KEY IN THE COMMENTS TABLE!!!!
 
+$categories = Category::find_all();
+
 if(isset($_POST['submit'])){
    $author = trim($_POST['author']);
    $body = trim($_POST['body']);
@@ -95,7 +97,7 @@ if(isset($_POST['submit'])){
             <div class="card mb-4">
                 <div class="card-header">Categories</div>
                 <div class="card-body">
-                    <div class="row">
+                   <!-- <div class="row">
                         <div class="col-sm-6">
                             <ul class="list-unstyled mb-0">
                                 <li><a href="#!">Web Design</a></li>
@@ -110,7 +112,16 @@ if(isset($_POST['submit'])){
                                 <li><a href="#!">Tutorials</a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div>-->
+
+                        <div class="col-12">
+                            <ul class="list-unstyled mb-0">
+                                <?php foreach($categories as $category): ?>
+                                <li><a href="#"><?php echo $category->name; ?></a></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+
                 </div>
             </div>
             <!-- Side widget-->

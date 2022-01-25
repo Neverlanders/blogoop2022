@@ -10,5 +10,6 @@
     require_once(INCLUDES_PATH.DS."User.php");
     require_once(INCLUDES_PATH.DS."Photo.php");
     require_once(INCLUDES_PATH.DS."Comment.php");
+    require_once(INCLUDES_PATH.DS."Category.php");
     require_once(INCLUDES_PATH.DS."Session.php");
 ?>
