@@ -1,43 +1,43 @@
 <?php
 include("includes/header.php");
-
 if (!$session->is_signed_in()) {//testen of er een categorie ingelogd is (is er een session)
     redirect('login2.php');
 }
-
 $categories = Category::find_all();
-
- $newCategory = new Category();
+$newCategory = new Category();
 if (isset($_POST['addCategory'])) {
     $newCategory->name = trim($_POST['category']);
-
     $session->message("The Category {$newCategory->name} has been added");
     $newCategory->save();
     redirect('categories.php');
 }
-
 include("includes/sidebar.php");
 include("includes/content-top.php");
 ?>
 <div class="row">
     <div class="col-12">
-        <?php if($session->message): ?>
+        <?php if ($session->message): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <?php echo $session->message;?>
+                <?php echo $session->message; ?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         <?php endif; ?>
         <h1>All Categories</h1>
-        <div class="input-group mb-3">
-            <form action="categories.php" method="post" enctype="multipart/form-data">
-                <input name="category" type="text" class="form-control mr-1" placeholder="Category invullen toevoegen...">
-                <button name="addCategory" class="btn btn-outline-primary" type="submit"><i
-                            class="fas fa-plus-circle pl-1"></i>Category
-                </button>
-            </form>
-        </div>
+
+        <form action="categories.php" method="post" enctype="multipart/form-data">
+            <div class="form-row mb-3">
+                <div class="col-11">
+                    <input name="category" type="text" class="form-control mr-1" placeholder="Category toevoegen...">
+                </div>
+                <div class="col">
+                    <button name="addCategory" class="btn btn-outline-primary" type="submit">Add Category
+                    </button>
+                </div>
+            </div>
+        </form>
+
     </div>
 </div>
 <div class="row">
@@ -68,6 +68,5 @@ include("includes/content-top.php");
 
 
 <?php
-
 include("includes/footer.php");
 ?>
