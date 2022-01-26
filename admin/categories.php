@@ -55,9 +55,9 @@ include("includes/content-top.php");
                 <tr role="row">
                     <td><?php echo $category->id; ?></td>
                     <td><?php echo $category->name; ?></td>
-                    <td><a href="delete_user.php?id=<?php echo $category->id; ?>" class="btn btn-danger"><i
+                    <td><a href="delete_category.php?id=<?php echo $category->id; ?>" class="btn btn-danger"><i
                                     class="far fa-trash-alt"></i></a>
-                        <a href="edit_user.php?id=<?php echo $category->id; ?>" class="btn btn-warning"><i
+                        <a href="edit_category.php?id=<?php echo $category->id; ?>" class="btn btn-warning"><i
                                     class="far fa-edit"></i></a></td>
                 </tr>
             <?php endforeach; ?>
