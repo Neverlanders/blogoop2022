@@ -32,7 +32,10 @@
                 $this->errors[] = $this->upload_errors_array['error'];
                 return false;
             }else{
-                $this->filename = basename($file['name']);
+                $date = date('Y_m_d-H-i-s');
+                $without_extension = pathinfo(basename($file['name']), PATHINFO_FILENAME);
+                $extension = pathinfo(basename($file['name']), PATHINFO_EXTENSION);
+                $this->filename = $without_extension.$date.'.'.$extension;
                 $this->type = $file['type'];
                 $this->size = $file['size'];
                 $this->tmp_path = $file['tmp_name'];
@@ -77,6 +80,25 @@
             }
         }
 
+        public function attachCategories($photoId,$categoriesArray){
+            global $database;
+            foreach($categoriesArray as $categoryId){
+
+                $sql =  "INSERT INTO `photos_categories`(`photo_id`, `category_id`) VALUES ($photoId,$categoryId)";
+                return $database->query($sql);
+
+            }
+        }
+        public static function attachedCategories($photoId){
+            global $database;
+            $sql = "SELECT category_id FROM `photos_categories` WHERE photo_id=".$photoId;
+            $result = $database->query($sql);
+            $rows = [];
+            while($row = $result->fetch_row()) {
+                $rows[] = $row;
+            }
+            return $rows;
+        }
 
 }
 ?>

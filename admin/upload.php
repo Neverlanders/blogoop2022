@@ -9,10 +9,14 @@ if(!$session->is_signed_in()){//testen of er een user ingelogd is (is er een ses
    redirect('login2.php');
 }
 /**vanaf hier code formulier*/
+
+/**ophalen categories**/
+$categories = Category::find_all();
+
 $message ="";
 $photo = new Photo();
 if(isset($_POST['submit'])){
-
+    global $database;
     $photo->title = $_POST['title'];
     $photo->alternate_text = $_POST['alternate_text'];
     $photo->description = $_POST['description'];
@@ -23,6 +27,10 @@ if(isset($_POST['submit'])){
     }else{
         $message = join("<br>", $photo->errors);
     }
+        $categoryArray = $_POST['myCategories'];
+   // $photoId= $database->the_insert_id();
+    $photo->attachCategories($photo->id, $categoryArray);
+
 }
 ?>
     <div class="container-fluid">
@@ -42,6 +50,15 @@ if(isset($_POST['submit'])){
                 <div class="form-group">
                     <label for="description">Description</label>
                     <textarea class="form-control" name="description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Category (CTRL+CLICK = multiple select)</label>
+
+                    <select name="myCategories[]" class="custom-select" id="inputGroupSelect01" multiple>
+                        <?php foreach($categories as $category): ?>
+                        <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+                       <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <input type="file" name="file" class="form-control">

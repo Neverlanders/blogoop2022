@@ -10,6 +10,7 @@ $photo = Photo::find_by_id($_GET['id']); //http://localhost/blogoop/photo.php?id
 $comments= Comment::find_the_comment($photo->id);//FOREIGN KEY IN THE COMMENTS TABLE!!!!
 
 $categories = Category::find_all();
+$filteredCategories = Photo::attachedCategories($_GET['id']);
 
 if(isset($_POST['submit'])){
    $author = trim($_POST['author']);
@@ -42,9 +43,17 @@ if(isset($_POST['submit'])){
                     <h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">Posted on January 1, 2021 by Start Bootstrap</div>
-                    <!-- Post categories-->
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                    <!-- Post categories -->
+                    <?php foreach($filteredCategories as $filteredCategory): ?>
+                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">
+                         <?php
+                         $catId = implode(', ', $filteredCategory);
+                         $catName = Category::find_by_id($catId);
+                         echo $catName->name;
+                         ?>
+                     </a>
+                    <?php endforeach;?>
+
                 </header>
                 <!-- Preview image figure-->
                 <figure class="mb-4"><img class="img-fluid rounded" src="<?php echo 'admin'.DS.$photo->picture_path(); ?>" alt="..." /></figure>
