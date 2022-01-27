@@ -48,8 +48,8 @@ if(isset($_POST['submit'])){
                      <a class="badge bg-secondary text-decoration-none link-light" href="#!">
                          <?php
                          $catId = implode(', ', $filteredCategory);
-                         $catName = Category::find_by_id($catId);
-                         echo $catName->name;
+                         $category = Category::find_by_id($catId);
+                         echo $category->name;
                          ?>
                      </a>
                     <?php endforeach;?>
