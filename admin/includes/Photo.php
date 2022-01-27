@@ -80,12 +80,12 @@
             }
         }
 
-        public function attachCategories($photoId,$categoriesArray){
+        public static function attachCategories($photoId,$categoriesArray){
             global $database;
             foreach($categoriesArray as $categoryId){
 
-                $sql =  "INSERT INTO `photos_categories`(`photo_id`, `category_id`) VALUES ($photoId,$categoryId)";
-                return $database->query($sql);
+                $sql =  "INSERT INTO `photos_categories` (`photo_id`, `category_id`) VALUES ($photoId,$categoryId)";
+                $database->query($sql);
 
             }
         }

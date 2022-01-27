@@ -29,18 +29,18 @@ if(isset($_POST['submit'])){
     }
         $categoryArray = $_POST['myCategories'];
    // $photoId= $database->the_insert_id();
-    $photo->attachCategories($photo->id, $categoryArray);
+    Photo::attachCategories($photo->id, $categoryArray);
 
 }
 ?>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="shadow-lg p-3 mb-5 bg-white rounded">UPLOAD</h1>
-            </div>
-            <form action="upload.php" method="post" enctype="multipart/form-data">
+<div class="row">
+    <div class="col-12">
+
+        <form class="shadow-lg bg-white rounded" action="upload.php" method="post" enctype="multipart/form-data">
+            <div class="bg-primary rounded-top text-white-50 p-3">Upload Photo</div>
+            <div class="p-3">
                 <div class="form-group">
-                    <label for="title">title</label>
+                    <label for="title">Title</label>
                     <input type="text" name="title" class="form-control">
                 </div>
                 <div class="form-group">
@@ -52,22 +52,27 @@ if(isset($_POST['submit'])){
                     <textarea class="form-control" name="description" rows="3"></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Category (CTRL+CLICK = multiple select)</label>
-
-                    <select name="myCategories[]" class="custom-select" id="inputGroupSelect01" multiple>
+                    <label for="description">Categories Choose... (CTRL+click)</label>
+                    <select name="myCategories[]" class="custom-select" id="category" multiple>
                         <?php foreach($categories as $category): ?>
-                        <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
-                       <?php endforeach; ?>
+                            <option value="<?php $category->id; ?>"><?php echo $category->name;
+                                ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="file" name="file" class="form-control">
-                </div>
-                <input type="submit" name="submit" value="upload" class="btn btn-primary">
-            </form>
-        </div>
 
+                    <input type="file" name="file" id="inputGroupFile02">
+
+
+                </div>
+
+                <input type="submit" name="submit" value="upload" class="btn btn-primary">
+            </div>
+
+        </form>
     </div>
+</div>
 <?php
 include("includes/footer.php");
 ?>
