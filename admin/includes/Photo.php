@@ -12,6 +12,7 @@
         public $tmp_path;
         public $upload_directory = 'img';
         public $errors = array();
+
         public $upload_errors_array = array(
             UPLOAD_ERR_OK => "There is no error",
             UPLOAD_ERR_INI_SIZE => "The uploaded file exceeds the upload max_filesize from php.ini",
@@ -94,10 +95,20 @@
             $sql = "SELECT category_id FROM `photos_categories` WHERE photo_id=".$photoId;
             $result = $database->query($sql);
             $rows = [];
+
             while($row = $result->fetch_row()) {
                 $rows[] = $row;
             }
-            return $rows;
+            //Maakt van de rows nu een array naar de category namen.
+            $categories = [];
+            if($rows){
+                foreach($rows as $category){
+                    $catId = implode(', ', $category);
+                    $category = Category::find_by_id($catId);
+                    $categories[]= $category->name;
+                }
+            }
+            return $categories;
         }
 
 }

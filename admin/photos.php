@@ -6,6 +6,8 @@ if(!$session->is_signed_in()){//testen of er een user ingelogd is (is er een ses
 
 $photos = Photo::find_all();
 
+
+
 include("includes/sidebar.php");
 include("includes/content-top.php");
 ?>
@@ -22,6 +24,7 @@ include("includes/content-top.php");
                     <th scope="col">File Name</th>
                     <th scope="col">Alt</th>
                     <th scope="col">Size</th>
+                    <th scope="col">Categories</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,6 +38,19 @@ include("includes/content-top.php");
                         <td><?php echo $photo->filename; ?></td>
                         <td><?php echo $photo->alternate_text; ?></td>
                         <td><?php echo $photo->size; ?></td>
+                        <td>
+                               <?php
+                                    $attachedCategories= $photo->attachedCategories($photo->id);?>
+                                    <?php
+                                        foreach($attachedCategories as $category): ?>
+                                        <a class="badge bg-success text-decoration-none text-white link-light"
+                                           href="#!">
+                                            <?php
+                                            echo $category;
+                                            ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                        </td>
                         <td><a href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a></td>
                         <td><a href="edit_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-warning"><i class="far fa-edit"></i></a></td>
                     </tr>
