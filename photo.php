@@ -47,9 +47,10 @@ if(isset($_POST['submit'])){
                     <?php foreach($filteredCategories as $filteredCategory): ?>
                      <a class="badge bg-secondary text-decoration-none link-light" href="#!">
                          <?php
-                         $catId = implode(', ', $filteredCategory);
-                         $category = Category::find_by_id($catId);
-                         echo $category->name;
+                         //$catId = implode(', ', $filteredCategory);
+                         //$category = Category::find_by_id($catId);
+                       //  echo $category->name;
+                         echo $filteredCategory;
                          ?>
                      </a>
                     <?php endforeach;?>

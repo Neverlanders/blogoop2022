@@ -22,7 +22,7 @@
                 <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" aria-current="page" href="photo.php?id=<?php echo 11; ?>">Photo</a></li>
+                <li class="nav-item"><a class="nav-link" href="photos.php">Photos</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="admin/index.php">Backend</a></li>
             </ul>
         </div>

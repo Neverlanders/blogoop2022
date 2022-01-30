@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
                     <label for="description">Categories Choose... (CTRL+click)</label>
                     <select name="myCategories[]" class="custom-select" id="category" multiple>
                         <?php foreach($categories as $category): ?>
-                            <option value="<?php $category->id; ?>"><?php echo $category->name;
+                            <option value="<?php echo $category->id; ?>"><?php echo $category->name;
                                 ?></option>
                         <?php endforeach; ?>
                     </select>
