@@ -102,8 +102,8 @@
             //Maakt van de rows nu een array naar de category namen.
             $categories = [];
             if($rows){
-                foreach($rows as $category){
-                    $catId = implode(', ', $category);
+                foreach($rows as $eenCatId){
+                    $catId = implode(', ', $eenCatId);
                     $category = Category::find_by_id($catId);
                     $categories[]= $category->name;
                 }

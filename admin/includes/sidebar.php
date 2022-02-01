@@ -57,6 +57,16 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider">
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="comments.php">
+                <i class="fas fa-comments"></i>
+                <span>Comments</span></a>
+        </li>
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
 
         <!-- Heading -->
         <div class="sidebar-heading">

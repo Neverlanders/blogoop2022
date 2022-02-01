@@ -25,6 +25,7 @@ include("includes/content-top.php");
                     <th scope="col">Alt</th>
                     <th scope="col">Size</th>
                     <th scope="col">Categories</th>
+                    <th scope="col"># Comments</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,7 @@ include("includes/content-top.php");
                         <td><?php echo $photo->filename; ?></td>
                         <td><?php echo $photo->alternate_text; ?></td>
                         <td><?php echo $photo->size; ?></td>
+
                         <td>
                                <?php
                                     $attachedCategories= $photo->attachedCategories($photo->id);?>
@@ -51,8 +53,16 @@ include("includes/content-top.php");
                                         </a>
                                     <?php endforeach; ?>
                         </td>
+                        <td>
+                            <a href="comments_photo.php?id=<?php echo $photo->id; ?>">
+                                <?php
+                                $comments = Comment::find_the_comment($photo->id);
+                                echo count($comments);
+                                ?>
+                            </a></td>
                         <td><a href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a></td>
                         <td><a href="edit_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-warning"><i class="far fa-edit"></i></a></td>
+                        <td><a href="../photo.php?id=<?php echo $photo->id; ?>" class="btn btn-warning"><i class="fas fa-eye"></i></a></td>
                     </tr>
                 <?php endforeach; ?>
 
