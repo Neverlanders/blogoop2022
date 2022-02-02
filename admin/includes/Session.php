@@ -3,6 +3,7 @@ class Session{
     /**PROPERTIES**/
     private $signed_in;
     public $user_id;
+    public $username;
     /**METHODS**/
     /**LOGIN EN LOGOUT**/
     private function check_the_login(){
@@ -17,6 +18,7 @@ class Session{
     public function login($user){
         if($user){
             $this->user_id = $_SESSION['user_id'] =$user->id;
+            $this->username = $_SESSION['username'] =$user->username;
             $this->signed_in = true;
         }
     }
@@ -46,8 +48,17 @@ class Session{
     }
     function __construct(){
         session_start();
+       // $this->visitor_count();
         $this->check_the_login();
         $this->check_message();
+    }
+
+    public function visitor_count(){
+        if(isset($_SESSION['count'])){
+            return $this->count = $_SESSION['count']++;
+        }else{
+            return $_SESSION['count'] = 1;
+        }
     }
 }
 $session = new Session();
