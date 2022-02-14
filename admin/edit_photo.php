@@ -13,16 +13,12 @@ if(empty($_GET['id'])){
             $photo->title = $_POST['title'];
             $photo->alternate_text = $_POST['alternate_text'];
             $photo->description = $_POST['description'];
-            $photo->type = $_POST['type'];
-            $photo->size = $_POST['size'];
-            $photo->update();
+            $photo->set_file($_FILES['file']);
+            $photo->save();
         }
     }
 
-
 }
-
-
 
 include("includes/sidebar.php");
 include("includes/content-top.php");

@@ -53,7 +53,10 @@
                 <i class="fas fa-cog"></i>
                 <span>Categories</span></a>
         </li>
-
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Comments
+        </div>
 
         <!-- Divider -->
         <hr class="sidebar-divider">

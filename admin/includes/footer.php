@@ -61,6 +61,13 @@
 <script>tinymce.init({selector:'textarea', menubar:false});</script>-->
 
 
+<!-- Page level plugins -->
+<script src="http://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
 
 </body>
 

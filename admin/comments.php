@@ -30,32 +30,16 @@ include("includes/content-top.php");
 
 
             </div>
-            <div class="table">
-                <div id="file_export_wrapper" class="container-fluid">
-                    <div>
-                        <button class="btn btn-primary mr-1" tabindex="0"
-                                aria-controls="file_export"><span>Copy</span></button>
-                        <button class="btn btn-primary mr-1" tabindex="0"
-                                aria-controls="file_export"><span>CSV</span></button>
-                        <button class="btn btn-primary mr-1" tabindex="0"
-                                aria-controls="file_export"><span>Excel</span></button>
-                        <button class="btn btn-primary mr-1" tabindex="0"
-                                aria-controls="file_export"><span>PDF</span></button>
-                        <button class="btn btn-primary mr-1" tabindex="0"
-                                aria-controls="file_export"><span>Print</span></button>
-                    </div>
-                    <div id="file_export_filter"><label>Search:<input type="search"
-                                                                      class="form-control mb-2 form-control-sm"
-                                                                      placeholder=""
-                                                                      aria-controls="file_export"></label>
-                    </div>
-                    <table id="file_export" class="table table-bordered nowrap display dataTable no-footer"
+
+
+                    <table id="example" class="display" style="width:100%"
                            role="grid" aria-describedby="file_export_info">
                         <thead>
                         <tr role="row">
                             <th scope="col">#</th>
                             <th scope="col">Author</th>
                             <th scope="col">Body</th>
+                            <th scope="col">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -75,7 +59,7 @@ include("includes/content-top.php");
                     </table>
 
                 </div>
-            </div>
+
         </div>
     </div>
 </div>

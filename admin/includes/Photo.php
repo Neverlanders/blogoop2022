@@ -42,9 +42,17 @@
                 $this->tmp_path = $file['tmp_name'];
             }
         }
+
         public function save(){
+            $target_path = SITE_ROOT.DS."admin".DS. $this->upload_directory.DS.$this->filename;
             if($this->id){
                 $this->update();
+                if(move_uploaded_file($this->tmp_path,$target_path)){//upload in de images map
+                    if($this->create()){//aanmaken in de database
+                        unset($this->tmp_path);
+                        return true;
+                    }
+                }
             }else{
                 if(!empty($this->errors)){
                     return false;
@@ -53,7 +61,7 @@
                     $this->errors[] = "File not available";
                     return false;
                 }
-                $target_path = SITE_ROOT.DS."admin".DS. $this->upload_directory.DS.$this->filename;
+
                 if(file_exists($target_path)){
                     $this->errors[]= "File {$this->filename} EXISTS!";
                     return false;
